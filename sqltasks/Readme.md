@@ -9,10 +9,10 @@ sudo docker run --name sqltasks -v "$PWD"/:/Users/dima/Documents/sqltasks/ -e PO
 docker exec -it sqltasks psql -U postgres -c "CREATE DATABASE sqltasks1;"
 
 3. Создание всех таблиц находится в скрипте. 
-ВАЖНО: скрипты лежат не директории /sqltasks (для данного примера) в в другой расшаренной на уровень выше(/Users/dima/Documents/) и в неё смотрит консоль.
+ВАЖНО: скрипты лежат не директории /sqltasks (для данного примера), а в другой расшаренной на уровень выше(/Users/dima/Documents/) и в неё смотрит консоль.
 
 docker exec -it sqltasks psql -U postgres -f /Users/dima/Documents/sqltasks/sqltasks1.sql
 
-4. Задания лежат в скрипте sqltasks1_requests.sql, который лежит рядом sqltasks1.sql. Я знаю что каждый запрос нужно в отдельный файл, но не вижу в этом особого смысла :)
+4. Задания лежат в скрипте sqltasks1_requests.sql или в отдельных файлах, который лежит рядом sqltasks1.sql.
 
 docker exec -it sqltasks psql -U postgres -f /Users/dima/Documents/sqltasks/sqltasks1_requests.sql
