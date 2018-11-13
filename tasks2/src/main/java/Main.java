@@ -16,8 +16,8 @@ public class Main {
         TestTasks.task10_ProgrammerDay(readConfig.getYear());
 
         TestTasks.task11_Last100Tweets();
-        //TestTasks.task12_SaveHTMLimages(readConfig.getImagesUrl());
-        //TestTasks.task13_SaveHTMLToPDF(readConfig.getUrl());
+        TestTasks.task12_SaveHTMLimages(readConfig.getImagesUrl());
+        TestTasks.task13_SaveHTMLToPDF(readConfig.getUrl());
     }
 
 }

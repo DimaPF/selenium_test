@@ -5,7 +5,7 @@
 
 Запуск:
 сменить текущую директорию на директорию проекта и написать в консоли
- mvn exec:java -Dexec.mainClass="tasks-1.0-SNAPSHOT.jar"
+ mvn exec:java -Dexec.mainClass="Main"
 
 или открыть и глянуть проект через IntelliJ IDEA
 
