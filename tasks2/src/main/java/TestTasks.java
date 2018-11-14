@@ -28,6 +28,11 @@ public class TestTasks {
         double fatBurningZone = maxPulse * 0.6;
         double zoneOfLightActivity = maxPulse * 0.5;
 
+        //printing results
+        task1Output(maxPulse, zoneVO2, anaerobicZone, aerobicZone, fatBurningZone, zoneOfLightActivity);
+    }
+
+    private static void task1Output(int maxPulse, double zoneVO2, double anaerobicZone, double aerobicZone, double fatBurningZone, double zoneOfLightActivity){
         System.out.println("---- 1 pulse ------");
         System.out.println("max ЧСС 100%: " + maxPulse);
         System.out.println("зона VO2 90% - 100%: " + zoneVO2 + " - " + maxPulse);
@@ -37,6 +42,7 @@ public class TestTasks {
         System.out.println("зона легкой активности 50% - 60%: " + zoneOfLightActivity + " - " + fatBurningZone);
         System.out.println("-------------");
     }
+
     public static void task2_ArrayElementSum(int[] intArray){
         //int[] intArray = {2, 5, 7, 8, 3, 0};
         int i, arrayElementSum, manualArrayElementSum;
@@ -49,6 +55,11 @@ public class TestTasks {
 
         arrayElementSum = Arrays.stream(intArray).sum();
 
+        //printing results
+        task2Output(manualArrayElementSum, arrayElementSum);
+    }
+
+    private static void task2Output(int manualArrayElementSum, int arrayElementSum){
         System.out.println("---- 2 sum ------");
         System.out.println("Array manual sum: " + manualArrayElementSum);
         System.out.println("Array sum(): " + arrayElementSum);
@@ -60,10 +71,10 @@ public class TestTasks {
         int i, min, max;
         OptionalInt arrayBuiltInMax, arrayBuiltInMin;
 
-        min = intArray[1];
+        min = intArray[0];
         max = min;
 
-        for(i=1; i < intArray.length; i++){
+        for(i=0; i < intArray.length; i++){
             if (max < intArray[i]) {
                 max = intArray[i];
             }
@@ -75,10 +86,15 @@ public class TestTasks {
         arrayBuiltInMin = Arrays.stream(intArray).min();
         arrayBuiltInMax = Arrays.stream(intArray).max();
 
+        //printing results
+        task3Output(min, max, arrayBuiltInMax.getAsInt(), arrayBuiltInMin.getAsInt());
+    }
+
+    private static void task3Output(int min, int max, int arrayBuiltInMax, int arrayBuiltInMin){
         System.out.println("---- 3 min/max ------");
         System.out.println("Array manual min=" + min + " max=" + max);
-        System.out.println("Array max(): " + arrayBuiltInMax.getAsInt());
-        System.out.println("Array min(): " + arrayBuiltInMin.getAsInt());
+        System.out.println("Array max(): " + arrayBuiltInMax);
+        System.out.println("Array min(): " + arrayBuiltInMin);
         System.out.println("-------------");
     }
 
@@ -106,10 +122,14 @@ public class TestTasks {
 
         listFirst.retainAll(listSecond);
 
+        //printing results
+        task4Output(result, listFirst);
+    }
+
+    private static void task4Output(String result, List<String> listFirst){
         System.out.println("---- 4 same arrays elements ------");
         System.out.println("Same elements (manual): " + result);
         System.out.println("Same elements retainAll(): " + listFirst);
-
         System.out.println("-------------");
     }
 
@@ -122,9 +142,13 @@ public class TestTasks {
             }
         }
 
+        //printing results
+        task5Output(wordCounter);
+    }
+
+    private static void task5Output(int wordCounter){
         System.out.println("---- 5 count some word usage in string ------");
         System.out.println("Count: " + wordCounter);
-
         System.out.println("-------------");
     }
 
@@ -135,6 +159,11 @@ public class TestTasks {
             newString = newString + retval;
         }
 
+        //printing results
+        task6Output(newString, sentenceString);
+    }
+
+    private static void task6Output(String newString, String sentenceString){
         System.out.println("---- 6 Remove Spaces From String ------");
         System.out.println("String without spaces (manual): " + newString);
         System.out.println("String without spaces replaceAll(): " + sentenceString.replaceAll(" ",""));
@@ -146,20 +175,26 @@ public class TestTasks {
         Boolean isPalindrome = Boolean.TRUE;
         char letterStartIndex, letterEndIndex;
 
-        System.out.println("---- 7 Check if word is palindrome ------");
         for(i=0; i < palindromeWord.length(); i++){
             letterStartIndex = palindromeWord.toLowerCase().charAt(i);
             letterEndIndex = palindromeWord.toLowerCase().charAt(palindromeWord.length() - i - 1);
             if (letterStartIndex != letterEndIndex) {
-                System.out.println("'" + palindromeWord + "'" + " is NOT the palindrome");
                 isPalindrome = Boolean.FALSE;
                 break;
             }
         }
 
+        //printing results
+        task7Output(palindromeWord, isPalindrome);
+    }
+
+    private static void task7Output(String palindromeWord, Boolean isPalindrome){
+        System.out.println("---- 7 Check if word is palindrome ------");
+
         if (isPalindrome) {
             System.out.println("'" + palindromeWord + "'" + " is the palindrome");
-        }
+        } else System.out.println("'" + palindromeWord + "'" + " is NOT the palindrome");
+
         System.out.println("-------------");
     }
 
@@ -183,6 +218,11 @@ public class TestTasks {
         //https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoUnit.html
         long resultDays = compareDates(startDate, endDate);
 
+        //printing results
+        task9Output(resultDays);
+    }
+
+    private static void task9Output(long resultDays){
         System.out.println("---- 9 Compare Dates ------");
         System.out.println("Date difference: " + resultDays + " days");
         System.out.println("-------------");
@@ -199,6 +239,11 @@ public class TestTasks {
 
         long daysInFebruary = compareDates(februaryDay, marchDay);
 
+        //printing results
+        task10Output(year, daysInFebruary);
+    }
+
+    private static void task10Output(int year, long daysInFebruary){
         System.out.println("---- 10 Programmer Day ------");
         if (daysInFebruary == 28) {
             System.out.println("Programmer Day 13th of September, " + new GregorianCalendar(year, 8, 13).getTime());

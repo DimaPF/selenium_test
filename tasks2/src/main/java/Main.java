@@ -1,7 +1,6 @@
 public class Main {
 
     public static void main(String[] args) {
-        //TestTasks testTasks = new TestTasks();
         ReadConfig readConfig = new ReadConfig();
 
         TestTasks.instantHeartRate(readConfig.getAge());
