@@ -1,18 +1,22 @@
-1. Ставим докер и открываем системную консоль.
+1. Download and install docker (https://store.docker.com/editions/community/docker-ce-desktop-mac)
+2. Run system console (Terminal) and open directory with scripts.
+3. Use next command for installation of POSTGRES  and mount directory in guest OS. 
+Where "/sqltasks/" - directory which will be shared on Guest OS; "$PWD" - directory which will be shared on Host OS  ($PWD mean current directory, if you want you can use any path). 
+Note: this directory should be used from other shared for Docker directory. Check list of shared directories in Docker > Preferences > File sharing.
 
-2. Следующей командой ставим POSTGRES и монтируем папку в гостевую ОС. Где /Users/dima/Documents/sqltasks/ - монтируемая папка в расшареннойдля докера директории (можно глянуть в настройках докера)
+sudo docker run --name sqltasks -v "$PWD"/:/sqltasks/ -e POSTGRES_PASSWORD=password1 -d postgres
 
-sudo docker run --name sqltasks -v "$PWD"/:/Users/dima/Documents/sqltasks/ -e POSTGRES_PASSWORD=password1 -d postgres
+3.1 Check if container run. To check container status:
+docker ps -a
 
-3. Создаём базу руками т.к. есть проблема с её созданием через скрипты.
+OPTIONAL: And start it if needed (using CONTAINER ID):
+docker start 6a244701b9b6
 
+4. In console use next command for creating (because their a problem for creating it using scripts).
 docker exec -it sqltasks psql -U postgres -c "CREATE DATABASE sqltasks1;"
 
-3. Создание всех таблиц находится в скрипте. 
-ВАЖНО: скрипты лежат не директории /sqltasks (для данного примера), а в другой расшаренной на уровень выше(/Users/dima/Documents/) и в неё смотрит консоль.
+5. All tables will be created from script "sqltasks1.sql". Use next command (scripts should be located in mounted directory!):
+docker exec -it sqltasks psql -U postgres -f /sqltasks/sqltasks1.sql
 
-docker exec -it sqltasks psql -U postgres -f /Users/dima/Documents/sqltasks/sqltasks1.sql
-
-4. Задания лежат в скрипте sqltasks1_requests.sql или в отдельных файлах, который лежит рядом sqltasks1.sql.
-
-docker exec -it sqltasks psql -U postgres -f /Users/dima/Documents/sqltasks/sqltasks1_requests.sql
+6. All tasks in script "sqltasks1_requests.sql" or in single files like "sqltasks1.sql". Use next command (scripts should be located in mounted directory!):
+docker exec -it sqltasks psql -U postgres -f /sqltasks/sqltasks1_requests.sql
