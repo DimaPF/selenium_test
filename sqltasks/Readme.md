@@ -11,12 +11,19 @@ docker ps -a
 
 OPTIONAL: And start it if needed (using CONTAINER ID):
 docker start 6a244701b9b6
+(where 6a244701b9b6 - docker container id)
 
 4. In console use next command for creating (because their a problem for creating it using scripts).
 docker exec -it sqltasks psql -U postgres -c "CREATE DATABASE sqltasks1;"
 
+for sqltasks2 ("CREATE DATABASE sqltasks2;")
+
 5. All tables will be created from script "sqltasks1.sql". Use next command (scripts should be located in mounted directory!):
-docker exec -it sqltasks psql -U postgres -f /sqltasks/sqltasks1.sql
+docker exec -it sqltasks psql -U postgres -f /sqltasks/dump/sqltasks1.sql
+
+for sqltasks2 (docker exec -it sqltasks psql -U postgres -f /sqltasks/dump/sqltasks2.sql)
 
 6. All tasks in script "sqltasks1_requests.sql" or in single files like "sqltasks1.sql". Use next command (scripts should be located in mounted directory!):
-docker exec -it sqltasks psql -U postgres -f /sqltasks/sqltasks1_requests.sql
+docker exec -it sqltasks psql -U postgres -f /sqltasks/queries/sqltasks1_requests.sql
+
+for sqltasks2 (docker exec -it sqltasks psql -U postgres -f /sqltasks/queries/sqltasks2_requests.sql)
