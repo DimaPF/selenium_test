@@ -4,7 +4,7 @@
 Where "/sqltasks/" - directory which will be shared on Guest OS; "$PWD" - directory which will be shared on Host OS  ($PWD mean current directory, if you want you can use any path). 
 Note: this directory should be used from other shared for Docker directory. Check list of shared directories in Docker > Preferences > File sharing.
 
-sudo docker run --name sqltasks -v "$PWD"/:/sqltasks/ -e POSTGRES_PASSWORD=password1 -d postgres
+sudo docker run --rm --name sqltasks -v "$PWD/:/sqltasks/" -e POSTGRES_PASSWORD=password1 -d postgres
 
 3.1 Check if container run. To check container status:
 docker ps -a
